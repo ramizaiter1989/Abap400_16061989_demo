@@ -1,0 +1,48 @@
+managed implementation in class ZBP_R_16061989FLIGHT unique;
+strict ( 2 );
+extensible;
+define behavior for ZR_16061989FLIGHT alias Flight
+persistent table Z16061989FLIGHT
+extensible
+etag master LocalLastChangedAt
+lock master
+authorization master( global )
+{
+  field ( mandatory : create )
+   CarrierID,
+   ConnectionID,
+   FlightDate;
+
+  field ( readonly )
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( readonly : update )
+   CarrierID,
+   ConnectionID,
+   FlightDate;
+
+
+  create;
+  update;
+  delete;
+
+  mapping for Z16061989FLIGHT corresponding extensible
+  {
+    CarrierID = CARRIER_ID;
+    ConnectionID = CONNECTION_ID;
+    FlightDate = FLIGHT_DATE;
+    Price = PRICE;
+    CurrencyCode = CURRENCY_CODE;
+    PlaneTypeID = PLANE_TYPE_ID;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}
